@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<link rel="icon" href="about:invalid"/>
+
+<script src="adpc-request-consent.js"></script>
+
+<b id="status">
+  The visitor has not (yet) consented to data processing for personalised recommendations.
+</b>
+
+<script>
+
+const status = document.getElementById('status');
+
+// We ask consent for one processing operation.
+const consentRequests = [
+  {
+    id: "content_recommendation",
+    text: "Creating an interest profile based on the pages you visit, to recommend you more interesting content.",
+    onConsent: () => {
+      status.innerText = 'The visitor consents to data processing for personalised recommendations.';
+      // …enable content personalisation here…
+    },
+    onWithdraw: () => {
+      status.innerText = 'The visitor no longer consents to data processing for personalised recommendations.';
+      // …disable content personalisation here…
+    },
+  }
+];
+
+// Make the consent request.
+AdpcRequestConsent(consentRequests).catch(error => {
+  status.innerText += `\n${error.message}`;
+});
+
+</script>
