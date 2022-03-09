@@ -1,4 +1,4 @@
-# ADPC server-side software
+# ADPC website helper software
 
 This repository provides a simple utility and example to help websites use [Advanced Data Protection Control (ADPC)](https://dataprotectioncontrol.org).
 
